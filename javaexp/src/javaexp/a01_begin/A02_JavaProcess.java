@@ -16,7 +16,7 @@ public class A02_JavaProcess {
 		ctrl+f11로 실행 했을 때, 운영체제에 프로그램을 실행 할 수 있는
 		메모리 안에서 해당내용을 처리하게 끔 수행시켜준다.
 		(단, 해당 클래스 안에 
-		(javac A02_JavaProc)
+		(javac A02_JavaProc).
 		이후, console창을 통해서 수행 결과를 보여준다.
 		*/
 		}
