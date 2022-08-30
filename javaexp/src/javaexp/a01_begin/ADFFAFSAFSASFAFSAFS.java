@@ -3,7 +3,7 @@ package javaexp.a01_begin;
 public class ADFFAFSAFSASFAFSAFS {
 
 	public static void main(String[] args) {
-		System.out.println("꾸꾸23");
+		System.out.println("꾸꾸2333");
 
 	}
 
