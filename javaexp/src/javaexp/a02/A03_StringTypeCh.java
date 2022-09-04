@@ -31,7 +31,7 @@ double A = 50.14;
 System.out.println(50.14+Double.parseDouble(num02Str));
 double num2 = Double.parseDouble(num02Str);
 System.out.println(50.15+num2);
-System.out.println((A + num02Str));
+System.out.println(A + num2);
 
 
 

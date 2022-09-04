@@ -24,7 +24,7 @@ public class A05_VarDeclare {
 		//int 10num = 50; 에러발생
 		//int maxSpeed = 170; //가독성을 위해 합성어는 대문자로 구분한다.
 		//String if = "홍길동"; if와같은 예약어는 에러발생...         
-		
+
 	}
 
 }
