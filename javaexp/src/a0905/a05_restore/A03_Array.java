@@ -1,4 +1,4 @@
-package a0905.a05_restore;
+/*package a0905.a05_restore;
 
 import java.lang.reflect.Array;
 import java.util.Scanner;
@@ -14,6 +14,7 @@ public class A03_Array {
 		 2. 같은 이름이기 때문에 각 구성데이터를 구분하는 구분자는
 		 	Index로 0부터 시작하여 처리한다.
 		 */
+/*
 			int num01 = 0;
 			int[] array01 = {1000,2000,3000,4000};
 			// array01[0] ~ array[3]으로 구분
@@ -60,7 +61,7 @@ public class A03_Array {
 		 	 변수명 = new 타입[]{데이터1, 데이터2, 데이터3};
 		 	 타입[] 변수명 = {데이터1, 데이터2, 데이터3};
 		 */
-		
+		/*
 		int[] array10;
 		int array11[];
 		array10 = null;
@@ -96,6 +97,7 @@ public class A03_Array {
 		 #여러가지 응용 예지 활용하기
 		 1. 배열의 index를 랜덤으로 호출하여 출력
 		 */
+/*
 		String[]games = {"가위","바위","보"};
 		int rdidx1 = (int)(Math.random()*games.length);
 		int rdidx2 = (int)(Math.random()*games.length);
@@ -113,7 +115,7 @@ public class A03_Array {
 		/*
 		 2.초기의 배열의 크기를 설정한 후, 데이터 할당 처리
 		 */
-		
+		/*
 		Scanner scan = new Scanner(System.in);
 		System.out.println("등록할 회원 인원을 입력:");
 		int cnt = Integer.parseInt(scan.nextLine());
@@ -165,7 +167,9 @@ public class A03_Array {
 			int rIdX = (int)(Math.random()*cards.length);
 			System.out.println(cards[rIdX]+",");
 			*/
+/*
 		}
 	}
 
 }
+*/
