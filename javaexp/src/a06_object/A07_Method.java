@@ -135,7 +135,6 @@ class Person{
 		this.name=name;
 	}
 	void setData(int age) {
-		 //이 객체가 소속된 기능 메소드 호출.
 		this.age=age;
 	}
 	//매개변수
