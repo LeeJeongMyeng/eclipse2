@@ -117,6 +117,12 @@ class AutoSeller{
 	int coin;
 	int totcoin;
 	int inputcoin;
+	void setcoin(int money) {
+		this.coin+=money; // 누적저장
+	}
+	int getcoin() {
+		return coin;
+	}
 	Scanner scan01 = new Scanner(System.in);
 	int insertCoin(){
 //		this.start=start;
