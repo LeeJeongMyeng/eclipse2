@@ -10,5 +10,7 @@ public class Hunter {
 		//Hunter클래스는 접근할 수 없다.
 //		System.out.println(w1.hiddenDeer);
 //		System.out.println(w1.hiddenCloth);
+		System.out.println(w1.introMyself);
+		//public이라 접근이 가능하다.
 	}
 }

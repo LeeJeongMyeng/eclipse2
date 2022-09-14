@@ -23,7 +23,7 @@ public class A02_AccessModifier {
 	// 1. A01_Product
 		A01_Product prod; // 같은 패키지에있는 클래스 호출 가능
 		prod= new A01_Product("사과");
-		System.out.println(prod.name);
+	//	System.out.println(prod.name);
 		//같은 패키지는 생성자가 derault 접근제어자여도 접근이 가능
 		A01_Person pson; //다른 패키지에 있는 클래스 호출
 	//	A02_Music music; //다른 패키지에 있는 클래스가 public이 아닐 때, 에러발생
