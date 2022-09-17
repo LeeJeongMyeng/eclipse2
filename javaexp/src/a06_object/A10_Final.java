@@ -15,7 +15,10 @@ public class A10_Final {
 		 	 }
 		 	 
 		 	cf) final만 붙은 필드는 객체마다 다른 상수를 가질 수 있다.
-		 
+		 	Person p01 = new Person("한국");
+		 	Person p01 = new Person("중국");
+		 	Person p01 = new Person("미국");
+		 	객체마다 final변수를 각각 가지고 변경이 불가능하다.
 		 # static final
 		 1.상수 = 정적 final 필드
 		 	- final필드 : 객체마다 가지는 불변의 인스턴스 필드
@@ -68,9 +71,16 @@ class Player01{
 }
 class Asian{
 	final String nation="한국";
-	final String ssn; //생성자에 의해 초기값 설정
-	String name;
-	static final String COLOR="갈색"; //클래스 공유 메모리로 객체단위로도 변경이 불가능하다.
+	//객체마다 한번만 설정가능
+	final String ssn;
+	//생성자에 의해 초기값 설정
+	String name; 
+	// 일반변수
+	static final String COLOR="갈색";
+	//클래스 공유 메모리로 객체단위로도 변경이 불가능하다.
+	//static final상수는 일반적으로 대문자로 선언하고,
+	// 합성어를 사용할때, _를 이용한다
+	//ex) SET_NAME, PI_VALUE
 	public Asian(String ssn, String name) {
 		super();
 		this.ssn = ssn;
@@ -84,3 +94,20 @@ class Asian{
 	}
 	
 }
+
+/*
+ # 네이밍 규칙
+ 1. 대문자로 시작(첫자)
+ 	클래스명(사용자정의)
+ 	api의 객체명
+ 	선언시도 대문자를 선언
+ 	생성자명
+ 2. 소문자
+ 	 클래스명 외, 대부분의 변수
+ 	 객체의 참조변수(인스턴스변수) 소문자
+ 	 메소드명도 사용
+ 	 합성어의 경우는 시작시 소문자로하고 구분자에 대해서
+ 	 	camel형식으로 대문자를중간에 추가한다.
+ 3. 모두 대분자
+  static final 상수
+ */

@@ -7,6 +7,7 @@ public class A09_StaticMember {
 		 #인스턴스 멤버란?
 		 1. 객체(인스턴스)마다 가지고있는 필드와 메소드
 		 	- 이들은 각각 인스턴스 필드, 인스턴스 메소드라고 부른다.
+		 	객체가 생성된 후에 사용할 수있는 객체 소속 멤버
 		 2. 인스턴스 멤버는 객체 소속된 멤버이기 떄문에 객체 없이 사용불가하다.
 		 3. this
 		  	 객체(인스턴스) 자신의 참조(번지)를 가지는 키워드
@@ -26,6 +27,8 @@ public class A09_StaticMember {
 		 #정적 멤버와 static
 		 1. 정적(static) 멤버란?
 		 	1) 클래스에 고정된 필드와 메서드 - 정적필드, 정적 메서드
+		 		객체의 공유메모리, 클래스 소속 멤버,
+		 		객체 생성없이 사용가능 ex)클래스명.멤버 = 데이터;
 		 	2) 정적 멤버는 클래스에 소속된 멤버
 		 		- 객체 내부에 존재하지 않고, 메소드 영역에 존재
 		 		-정적 멤버는 객체를 생성하지 않고 클래스로 바로 접근해 사용
@@ -48,14 +51,18 @@ public class A09_StaticMember {
 		 		 	  참조변수.static변수 ==> 클래스명.static변수
 		 		}
 		 */
-		BuildingLotte b01 = new BuildingLotte("서울", 100000);
+		/*
 		BuildingLotte.drawingPay=3000000;
+		//객체 생성전에 클래스명.static변수로 사용가능
+		BuildingLotte b01 = new BuildingLotte("서울", 100000);
+		
 		BuildingLotte b02 = new BuildingLotte("부산", 120000);
 		b01.showInfo();
 		b02.showInfo();
 		BuildingLotte.drawingPay+=100000;
 		b01.showInfo();
 		b02.showInfo();
+		*/
 		
 		BankAccount.totalcost=2000000;//static 변수는 객체 생성없이 객체의 공유 메모리 설정
 		BankAccount b03 = new BankAccount("농협",10000);
@@ -68,7 +75,7 @@ public class A09_StaticMember {
 	}
 
 }
-class BuildingLotte{
+/*class BuildingLotte{
 	String loc; // instance변수 -위치
 	int siteCost; //instance변수 - 부지비용
 	static int drawingPay; // static변수 - 도면비용
@@ -84,7 +91,7 @@ class BuildingLotte{
 		System.out.println("부지 비용:"+siteCost);
 	}
 }
-
+*/
 // ex) BankAccount 클래스를 선언하고, 필드(계좌명, 계좌별 잔액)-인스턴스변수,
 //		(모든계좌의 총액)Static변수를 선언하여 데이터를 확인하세요
 

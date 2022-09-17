@@ -96,10 +96,10 @@ ScoccerPlayer sp01 = new ScoccerPlayer("이정명","B Rank");
 		 * 
 /*[1단계:코드] 6. 컴퓨터의 종류, 사양내용(cpu,ram,hdd)을 static final, static)을 이용하여 초기화 호출하여 출력하세요.
 class Computer{
-static String cname;
-String hdd;
-final String cpu;
-static final String ram = "DDR4 8GB";
+String hdd; //인스턴스 변수: 객체별 변경가능
+static String cname; // 클래스 단위 변수설정, 클래스 단위로는 변경가능
+final String cpu; // 객체별 한번 설정시 변경 불가능
+static final String ram = "DDR4 8GB"; //클래스단위로도 변경이 절대로 불가능
 public Computer(String hdd, String cpu) {
 	this.hdd = hdd;
 	this.cpu = cpu;
