@@ -117,3 +117,4 @@ class FireMan extends Worker{
 	}
 	
 }
+

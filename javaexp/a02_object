@@ -30,9 +30,109 @@
 8. 객체vs객체 관계
    1:1
    1:다
+   상위: 넓은메모리
+   	 하위1 : 작은 메모리
+   	 하위2 : 작은 메모리
+   	 하위3 : 작은 메모리
+   다형성을 처리할 때
+   1) 재정의하는 메서드 : 하위에서 선언된 기준 처리
+   2) 상위에만 선언 메서드 : 하위에서 공통 메서드로 사용가능
+   3) 하위에만 선언 메서드 : 다형성에 의한 참조변수로 접근 불가능
+   			(공통으로 사용할 기능메서드가 아닌 상속상관없이 순수하게 사용할 메서드
+   		하위 객체로 타입 캐스팅해서 하위만 선언된 메서드 사용가능
+   		FireMan f01 = new FireMan();
+   		FireMan f02 = (FireMan) w02; //타입캐스팅
+   		
+   		==> ArrayList List = new ArrayList();
+   			ArrayList<Object> list = new ArrayList<Object>();
+   			list.add(안녕);
+   			list.add(new int[5]);
+   			list.add(new Person());
+   			
+   			Object : 자바의 모든 객개의 상위 객체.
+   				상위에서 선언되거나, 하위에 재정의하지않는 내용은 사용불가
+ 
+   			
+   			Object o1 = new String();
+   			Object o2 = new int[5](); //사용불가
+   			 02[0] (X)
+   			Object o3 = new Person();
+   				o3.getName(); (X)
+   			Object o4 = new Woman();
+   				o4.getName(); (X)
+   				
+   			list.get(2).getAge();(X)
+   			Person p = (Person)list.get(2);
+   			p.getAge(); (O)
+   
 9. 상속개념이해
 	1) 재사용을 위한 상속
 	2)재정의 처리(overriding)
 	3)추상클래스에 대한 이해와 활용
+		위 오버라이딩과 다형성을 도입해서 상위클래스에서 재정의할 내용을
+		body({})없이 abstract함으로써
+		- 추상메서드 선언을 통해 상위 받는 하위클래스는
+			반드시 재정의하게끔 하여 메서드 통일성 유지
+			ex) Larva 추상메서드로 attack()를 선언하면
+			상속받는 모든 실제클래스는 attack()반드시 재정의 처리해야함
+		
+		- 특징
+			혼자 객체 생성 불가
+			추상메서드를 하위에 반드시 재정의
+			공통메서드 사용
 	4) interface사용
+		-하나의 추상적인 메서드를 가지고있는 interface를 만들고
+			이것을 상속받은 하위클래스에서 재정의하여 사용함으로써, 다양한 기능 처리를 
+			상위에서 처리할 수 있게 한다.
+			interface Flyway{
+			 (public abstract)<--굳이안써도 붙는다 void fly();
+			}
+			class Wing01 implements Flyway{
+				void fly{
+				우리동네를 날다.
+			}
+			class Wing02 implements Flyway{
+				void fly{
+				하늘위를 날다
+			}
+			class Wing03 implements Flyway{
+				void fly{
+				우주를 날다
+			}
+			Flyway f1 = new Wing01(); f1.fly();
+			Flyway f2 = new Wing01(); f2.fly();
+			Flyway f3 = new Wing01(); f3.fly();
+			
+			
+			
+			class Robot{
+			private Flayway flyway;
+			public void setFlyway(Flayway flyway){
+			this.flyway=flyway;
+			}
+			public void flying(){
+			if(this.flyway){
+				this.flyway.fly()
+			}else{
+			날개가 장착되지 않음.
+			}
+			}
+			}
+			
+			Robot r1 = new Robot();
+			r1.setFlyway(new Wing01());
+			r1.setFlyway(new Wing02());
+			r1.setFlyway(new Wing03());
+			//인터페이스에 의해 할당하는 객체를 생성하는 구조로하면
+			//Robot클래스에 코드 변경이 일어나지않고, 계속적인
+			// 기능의 변경을 처리가능
+			// -결합도가 낮고 응집도가 높은 프로그램처리
+			
+			인터페이스의 필드 :
+			(public static final) String FUN01 = '상수데이터';
+		1.8~ 버전부터는
+		DEFAULT 기능메서드 구상메서드 선언사용
+		static 기능메서드(인터페이스명. 메서드명()) 선언사용
+		
+			
 10. 패턴 자바
