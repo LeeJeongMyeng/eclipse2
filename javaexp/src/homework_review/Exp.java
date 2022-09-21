@@ -1,30 +1,48 @@
 package homework_review;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-//import a06_object.Ticketing;
 
-;
-
-//import a06_object.SchStudent;
 
 
 
 public class Exp {
-	private String callexp1="private 예시 문구입니다.";
-	String callexp2 = "default 예시 문구입니다.";
-	protected String callexp3 = "protected 예시 문구입니다.";
-	public String callexp4="public 예시 문구입니다.";
+	public static void main(String[] args)  {
+		Map<String, Civilian> Map = new HashMap<String,Civilian>();
+		Map.put("950101-1xxxxxx",new Civilian("가길동","서울"));
+		Map.put("960202-2xxxxxx",new Civilian("나길동","대전"));
+		Map.put("970303-1xxxxxx",new Civilian("다길동","대구"));
+		Map.put("980404-2xxxxxx",new Civilian("라길동","부산"));
+		Map.put("990505-1xxxxxx",new Civilian("마길동","광주"));
+		Set<String>Setno=Map.keySet();
+		for(String No:Setno) {
+			System.out.print("주민번호:"+No+"\t");
+			Civilian st = Map.get(No);
+			System.out.print("이름:"+st.getCname()+"\t  ");
+			System.out.print("거주지:"+st.getCNum()+"\n");
 
-	public void callExp(){
-		System.out.println("private:"+callexp1);
-		System.out.println("default:"+callexp2);
-		System.out.println("protected:"+callexp3);
-		System.out.println("Public:"+callexp4);
+		}
+	
+	}}
+class Civilian{
+	private String Cname;
+	private String CNum;
+	public Civilian(String cname, String cNum) {
+		Cname = cname;
+		CNum = cNum;
+	}
+	public String getCname() {
+		return Cname;
+	}
+	public void setCname(String cname) {
+		Cname = cname;
+	}
+	public String getCNum() {
+		return CNum;
+	}
+	public void setCNum(String cNum) {
+		CNum = cNum;
 	}
 }
-//[1단계:확인] 7. 아래의 여러가지 1:다 관계 클래스를 선언하고 출력하세요.
-
-//1) 담당교수, 수강 학생
-//2) 기차, 기차 좌석정보
-
