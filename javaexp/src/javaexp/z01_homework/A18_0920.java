@@ -1,4 +1,4 @@
-package javaexp.homeworkExp;
+package javaexp.z01_homework;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -293,22 +293,34 @@ byte[] bytes = {1,2,3,4,5,6};
 == 평가대비(알고리즘) 객관식 문제 ==
 1. 문자열을 검색할 때, 검색하는 형식이 틀린 것은
     1) 
+    //배열안에 있는 검색을 전체를 하여 결과를 처리해야 되기에
+    // {"홍길동","김길동","신길동"} : members
+    // "홍" :schStr
+    // 전역변수로 검색 결과 선언..
+     
         boolean hasData=false;
         for(String mem : members){
-            if(mem.indexOf(schStr) !=-1){
+            if(mem.indexOf(schStr) !=-1){ // 비슷한 글자
                 hasData=true;
             }
         }
+        //하나라도 검색이 되면 hasData=true;
+         * 
     2) 
         boolean hasData=false;
         for(String mem : members){
-            if(mem.equals(schStr)){
+            if(mem.equals(schStr)){ // 동일한 글자
                 hasData=true;
             }
         }
     3) 
         for(String mem : members){
             String result="";
+             //for안에 들어갔을 때, 문제가됨
+             // 외부에서 for문에서 검색된 결과를 볼수도 없고
+             // 반복문을 통해 다시 ""으로 다시 초기화가 배열중에 한개 검색된 내용을
+             // 정상적 처리가 되지 않는다.
+             
             if(mem.indexOf(schStr) !=-1){
                 result="검색됨";
             }

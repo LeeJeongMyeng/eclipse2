@@ -1,4 +1,4 @@
-package javaexp.a10_api;
+ package javaexp.a10_api;
 
 public class A10_Math {
 
@@ -29,6 +29,8 @@ public class A10_Math {
 		//double ceil(double a) : 올림값 처리
 		System.out.println("Math.ceil(5.3):"+Math.ceil(5.3));
 		//double floor(double a): 내림값 처리
+		//ceil 및 floor는 리턴값이 실수 이기 때문에
+		// 정수로 사용하려면 타입캐스팅이 필요하다.
 		System.out.println("Math.floor(5.4):"+Math.floor(5.9));
 		//int Math.max(int a,int b) : 둘중 최대값 리턴
 		System.out.println("Math.max(3,9):"+Math.max(3, 9));

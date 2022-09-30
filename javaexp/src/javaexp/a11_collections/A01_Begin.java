@@ -54,6 +54,12 @@ public class A01_Begin {
 		 	 		isEmpty() : 컬렉션이 비어있는지 확인
 		 	 		int size():크기
 		 	 		
+		 	 		if(!list.isEmpty()){
+		 	 		}
+		 	 		
+		 	 		if(list.size()>0){
+		 	 		}
+		 	 		
 		 	 		void clear():포함된 모든 객체를 삭제
 		 	 		remove9int index) : 해당 위치의 객체를 삭제
 		 	 		boolean remove(Object o): 주어진 객체를 삭제

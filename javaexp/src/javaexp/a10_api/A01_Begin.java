@@ -16,6 +16,43 @@ public class A01_Begin {
 		 2. 포함된 클래스와 인터페이스는 import없이 사용
 		 3. 주요 클래스
 		 	Object = 자바 클래스의 최상위 클래스로 사용
+		 			모든 클래스(내장/사용정의)는 Object를 상속하고 있다.
+		 			그러므로, Object가 가지고있는 기본적인 메서드는
+		 			재정의하거나 사용할 수 있다.
+		 			toString(), hashCode()...
+		 			1) ArrayList list ==> ArrayList<Object>list
+		 			2)다형성에 의해서 모든 객체는  Object 객체에 할당이 가능하다.
+		 			 		Object ob = new Person()
+		 			3)그래서 , 상위에 재정의하는 메서드는 상위 Object의
+		 				참조 변수로 사용이 가능하지만
+		 			4) 하위 고유 메서드를 사용하고자 할 때는 typecasting
+		 				이 필요로 하다.
+		 				ex)
+		 				Person클래스에서만 선언된 name필드와
+		 				getName() 메서드를 상위 클래스의 참조변수로 
+		 				ob로 사용불가,
+		 				ob.getName() (X)
+		 				타입 캐스팅을 하여야한다.
+		 				Person p = (Person)ob;
+		 				p.getName() (O)
+		 			5) ArrayList list = new ArrayList();
+		 				list.add(new Person());
+		 				list.add("안녕");
+		 				list.add(new Man());
+		 				이렇게 모든 객체 할당 가능하지만
+		 				해당 객체의 고유 필드와 메서드를 사용하려면
+		 				타입캐스팅이 필요하다.
+		 				Person p = (Person)list.get(0)
+		 				Man m = (Man)list.get(1);
+		 			6) 위 같이 할당은 가능하지 사용하려는 객체의 유형으로
+		 				타입캐스팅하는 불편함이 있는데.. 
+		 				단일 객체를 사용할 경우 Generic(<객체유형>)을 선언하는경우 사용 가능하다.
+		 				ArrayList<Person> list = new ArrayList<Person>();
+		 				list.add(new Person());
+		 				list.add(new Person());
+		 				
+		 				Person p = list.get(0);
+		 				Person p  = list.get(1);
 		 	system = 표준입력(키보드)으로부터 데이터를 입력 받는다.
 		 			System.in
 		 			표준 출력창치(모니터)로 출력하기 위해 사용
@@ -26,6 +63,8 @@ public class A01_Begin {
 		 	String - 문자열을 저장하고 여러가지 정보를 얻을 때
 		 	StringBuffer, StringBuilder
 		 			- 문자열을 저장하고 내부 문자열을 조작할 때 사용
+		 			sbf.append("문자열")
+		 			sbf.append("문자열") :메모리 1개
 		 	Math - 수학 함수를 이용할 떄 사용
 		 	Wrapper class(기본데이터유형의 객체유형화)
 		 		Byte,Short, Character, Integer.Float, Double,Boolean

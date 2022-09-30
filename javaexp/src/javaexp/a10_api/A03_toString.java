@@ -1,8 +1,14 @@
 package javaexp.a10_api;
-
+class Food{
+	public String toString() {
+		return "to String():참조변수만 호출";
+	}
+}
 public class A03_toString {
 
 	public static void main(String[] args) {
+		Food f = new Food();
+		System.out.println("참조변수:"+f);
 		// TODO Auto-generated method stub
 /*
   #toString()

@@ -1,5 +1,7 @@
 package javaexp.a09_execption;
-
+class UserExp extends Exception{
+	
+}
 public class A08_UserException {
 
 	
@@ -19,8 +21,10 @@ public class A08_UserException {
 		  
 		  #예외 발생 시키기
 		  1. 코드에서 예외 발생 시키는 법
+		  1) 예외 발생처리throw)
 		   throw new XXXException()
 		   throw new XXXException("메세지")
+		   2) 예외 위임처리(throws)
 		   public void method throws XXXException{
 		   	throw new XXXException("메세지");
 		   }

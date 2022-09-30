@@ -78,6 +78,11 @@ public class A03_Map {
 		stdMap.put(2,new StuPoint("김길동",71,81,91));
 		stdMap.put(3,new StuPoint("박길동",72,82,92));
 		stdMap.put(2,new StuPoint("장길동",73,83,93));
+		
+		/*
+		 Wrapper클래스의 경우, key값은 중복을 제거하고, 데이터가 자동 정렬 된다.
+		 */
+		
 		Set<Integer>inos=stdMap.keySet();
 		for(int no:inos) {
 			System.out.print(no+"\t");

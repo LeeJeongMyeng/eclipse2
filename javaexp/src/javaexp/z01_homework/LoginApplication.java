@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 	public class LoginApplication {
-	    private static int usernum = 0;
+	    private static int usernum = 10;
 	    private static User user[] = new User[10];
 	    private static Scanner scanner = new Scanner(System.in);
 	    private static String inputId, inputPassword, inputNickname;
@@ -43,7 +43,8 @@ import java.util.Scanner;
 
 	    private static void createAccount() {    //회원가입 선택
 	        System.out.print("아이디를 입력하세요 : ");
-	        inputId = scanner.next(); user[usernum].setId(inputId);
+	        inputId = scanner.next();
+	        user[usernum].setId(inputId);
 	        System.out.print("비밀번호를 입력하세요 : ");
 	        inputPassword = scanner.next(); user[usernum].setPassword(inputPassword);
 	        System.out.print("닉네임을 입력하세요 : ");

@@ -20,6 +20,13 @@ public class A05_String {
 		System.out.println("10번째 문자 리턴:"+civilNum.charAt(6));
 		System.out.println("마지막 문자 리턴:"+civilNum.charAt(civilNum.length()-1));
 			//앞으로는 년월로 추출해보기
+		
+		//String 생성자로 매개값을 처리할 수 있는 데이터 유형
+		// 1. 문자열 자체: new String("안녕하세요");
+		// 2. 문자배열: new String({'안','녕','하','세','요'});
+		// 2. byte배열: new String({1,2,3,4,5});
+		// 65 -->'A' ==>"A..."
+		String str100 = new String();
 	}
 
 }

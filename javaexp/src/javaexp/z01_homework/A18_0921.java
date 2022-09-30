@@ -299,9 +299,14 @@ index가 아닌 object로 구분하여 삭제한다.
 1) points.add(new Integer(70));
 2) points.add(90);
    points.add(new Integer("80"));
-3) int minPoint = 100;
+3) int minPoint = 100; //배열에서 최소값을 도출할때는 나올 수 있는 최대값을
+							초기값으로 설정하고
+	int maxPoint =0; //최대값을 도출할 때는 나올 수 있는 최소값을 설정..
    for(int num01:points){
+   System.out.println(num01+":"+minPoint
+   
 4)   if(minPoint < num01){
+//초기 최소값보다 적은 값이 나올때, 최소값으로 설정..
        minPoint=num01;
    }
    }
