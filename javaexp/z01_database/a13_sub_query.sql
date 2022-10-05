@@ -3,6 +3,15 @@
  	1.개요
  		하나의 sql명령문의 결과를 다른sql명령문에 전달하기 위해 두 개 이상의
  		sql명령문을 하나의 slq명령문으로 연결하여 처리하는 방법
+ 	       1)메인쿼리
+ 	       	where컬럼 연산자(서브쿼리)
+ 	       2) 인라인뷰 형식
+ 	       	from (서브쿼리),(서브쿼리)
+ 	       3)select (서브쿼리)
+ 	        from 테이블
+ 		
+ 		
+ 		
  	2. 서버쿼리의 필요성
  		1) 사원 'SMITH'와 동일한 부서번호를 가진 사원의 정보를 검색
  			- 사원 테이블에서 'SMITH'라는 사원을 SQL명령문을 통해 검색
@@ -52,10 +61,17 @@ WHERE e.MGR =m.EMPNO
 	 			from emp
 	 			where deptno = 10 );
 	 			부서번호가 10인 사원의 최대 급여보다 적은 급여를 가진 사원 정보
+	 		-- 그룹 함수 통계의 단일값을 기준으로 하는 경우는 단일행/단일열 서버쿼리
+	 		ex)평균 급여보다 많은 사원정보를 출력
+	 		select *
+	 		from emp
+	 		where sal>= (select avg(sal) from emp); 
+	 			
 	 			
 	 2. 다중행 서버쿼리
 	 	- 서버 쿼리의 결과값이 여러행일 때, 활용된다.
 	 	- 다중행 비교연산자 : in,any,some,all,exists등을 활용할 수 있다.
+	 	
 	 	ex) select *
 	 		from emp
 	 		where job in(
@@ -63,7 +79,18 @@ WHERE e.MGR =m.EMPNO
 	 			from emp
 	 			where sal between 1000 and 2000
 	 					);
-	 		 		
+	 	--부서별로 최고급여와 동일한 사원들 출력
+	 	select *
+	 	from emp
+	 	where(deptno,sal) in(
+	 	select deptno,max(sal)
+	 	from emp
+	 	group by deptno
+	 	 );
+	 	ps)부서별 최고급여는 sql을 통해서 기본적으로 부서번호와 최고급여 정보만 나오지,
+	 	사원의 기타정보를 도출할 수 없다.
+	 	위와같이  subquery를 통해 해당 정보의 사원 정보를 도출할 수 있따.
+	 	
 	*/
 	SELECT min(sal)
 	FROM EMP e 
@@ -122,7 +149,7 @@ GROUP BY deptno;
 --SALESMAN 중에서 가장 급여가 낮은 사람
 SELECT *
 FROM EMP  
-WHERE (JOB,SAL) =(
+WHERE (JOB,SAL) =( --job,sal이 and조건으로 연결되어있는 경우
 SELECT job,min(sal)
 FROM EMP e 
 WHERE job = 'SALESMAN'

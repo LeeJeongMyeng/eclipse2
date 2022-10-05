@@ -27,9 +27,9 @@ SELECT e.empno, e.ename, e.mgr, m.empno, m.ename,
 		e.ename||'의 관리자는 '||m.ename||'이다.' msg
 FROM EMP e ,emp m
 WHERE e.MGR =m.EMPNO;
-
+--ps) 추후에 답변형 게시판도 원본글과 답글은 계층형 관계로서, 위와같은 계층형데이터
+--    처리를하면, 계층적 sql (start with,prior, siblings 등) 키워드 활용
 --ex) 연봉이 @@@인 사원 명 @@@의 관리자는 @@@이다.
-
 SELECT e.empno, e.ENAME , e.SAL, e.mgr, m.empno, m.ename, m.sal,
 		'연봉이'||e.sal||'인 '||e.ename||'의 관리자 명은 '||m.ename||'이고, 연봉은 '||m.sal||'입니다.' sal2
 FROM EMP e ,emp m

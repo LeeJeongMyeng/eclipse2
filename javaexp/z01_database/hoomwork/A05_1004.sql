@@ -22,9 +22,11 @@ FROM EMP e ,SALGRADE s
 WHERE job ='SALESMAN';
 
 --[2단계:코드] 3. 1사분기에 입사한 사원중, 부서명이 ACCOUNTING인 사원의 이름, 급여와 급여등급 출력하세요.
-SELECT ENAME,DNAME, SAL, GRADE
-FROM EMP e ,DEPT d,SALGRADE s  
-WHERE TO_CHAR(HIREDATE,'Q')='1'
+SELECT ENAME,DNAME,HIREDATE , SAL, GRADE, TO_CHAR(HIREDATE,'Q')||'분기' 분기
+FROM EMP e ,DEPT d,SALGRADE s 
+WHERE e.DEPTNO =d.DEPTNO 
+AND SAL BETWEEN losal AND hisal --join안하면 아래 dname=''떄문에 다른사람 부서명이 바뀌어서 나옴
+AND TO_CHAR(HIREDATE,'Q')='1'
 AND DNAME= 'ACCOUNTING';
 --[1단계:개념] 4. outer join의 기본 형식과 equi join과의 차이점을 기술하세요.
 /*OUTER JOIN
@@ -44,7 +46,13 @@ FROM EMP e ,DEPT d
 WHERE e.DEPTNO(+) = d.DEPTNO
 GROUP BY D.DEPTNO;
 --[1단계:코드] 6. 관리자하위에 포함된 사원을 기준으로 관리자의 하위 직원의 수를 관리자명, 사원수로 출력하세요.
---?
+-- 1) 관리자하위에 포함된 사원을 기준 (mgr,empno의 self join테이블 처리)
+-- 2) 관리자 정보 m,기본사원 정보를 e로 처리
+-- 3) 관리자명(관리자 정보의 사원명), 사원수(기본 사원정보의 count)
+SELECT m.ENAME , COUNT(e.EMPNO) 사원수 
+FROM EMP e ,emp m
+WHERE e.MGR =m.EMPNO
+GROUP BY m.ENAME;
 --[1단계:개념] 7. subquery란 무엇인가? 여러가지 유형과 함께 기술하세요.
 /*
  하나의 sql명령문의 결과를 다른sql명령문에 전달하기 위해 두 개 이상의
@@ -70,28 +78,34 @@ GROUP BY D.DEPTNO;
  */
 --[1단계:코드] 8. JAMES와 같은 입사일의 분기를 가진 사원을 출력하세요.
 -- james 4분기
-SELECT *
+-- james의 입사분기
+SELECT TO_CHAR(hiredate,'q')
+FROM EMP e3 
+WHERE ename='JAMES';
+-- 위 분기와 동일한 사원 where TO_CHAR(hiredate,'q')=(서브쿼리); 
+SELECT TO_CHAR(hiredate,'q')||'분기' 분기, E.*
 FROM EMP e 
-WHERE TO_CHAR(hiredate,'q') IN  (
-		SELECT TO_CHAR(hiredate,'q')
-		FROM EMP e2 
-		WHERE TO_CHAR(hiredate,'q')='4'
+WHERE TO_CHAR(hiredate,'q') =  (
+	SELECT TO_CHAR(hiredate,'q')
+	FROM EMP e3 
+	WHERE ename='JAMES'
 		); 
 --[1단계:코드] 9. ALLEN과 같은 관리자를 둔 사원을 출력하세요.
--- 7698
 SELECT *
-FROM EMP e 
+FROM EMP e2 
 WHERE MGR IN (
 SELECT mgr
 	FROM EMP e 
 	WHERE mgr=7698
 );
 --[1단계:코드] 10. 보너스가 가장 많은 사원정보(사원명, 부서명, 보너스)를 출력하세요.
-SELECT ENAME ,dname,COMM 
-FROM EMP,DEPT d 
-WHERE COMM IN (
+-- 최고보너스 출력 후, 부서정보(DEPT테이블)과 조인
+SELECT ENAME, DNAME,COMM 
+FROM EMP E, DEPT d 
+WHERE E.DEPTNO=D.DEPTNO 
+AND COMM = (
 SELECT MAX(COMM) 
-FROM EMP e 
+FROM EMP 
 );
 
 
