@@ -53,6 +53,8 @@ HAVING MAX(sal)>=3000 ;
  	select 함수(데이터), 그룹함수()
  	from 테이블
  	group by 함수(데이터)
+ 	having 그룹함수() >=0;
+ 		having은 그룹함수에 비교, 조건/논리 연산식을 붙여 처리한다.
  */
 -- 분기별 최대 급여액 출력
 SELECT TO_CHAR(hiredate,'Q') 분기, MAX(SAL)

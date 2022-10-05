@@ -7,31 +7,32 @@ import java.util.Scanner;
 
 
 
-public class LogApp_Original {
+public class LogApp_NonOverLap {
    
-   private static Scanner scanUser = new Scanner(System.in);
+   private static Scanner scanUser = new Scanner(System.in); //Scanner 생성
    private static UserInfo2[] user = new UserInfo2[10];
    // 맨아래의 UserInfo 클래스를 가져와 10개의 크기를 가진 배열로 설정
-   private static int Usernumber = 0; // 회원가입시, 1씩 늘리기
-   private static String SignId,SignPass,SignNick;
+   // [UserName,UserPass,UserNic]
+   private static int Usernumber = 0;
+   // 회원가입시, 1씩 늘려 남은 배열수 확인.
    
    //==================회원가입 부분========================    
-   private static void SignUp(){
+   private static void SignUp(){ 
 
       System.out.println("현재 가입가능한 인원:"+(10-Usernumber));
       //아래 user[Usernumber]의 해열을 통해 0번 배열에 ID/PASS/NicName이 설정된다.
       System.out.print("아이디를 정해주세요:");
-      SignId = scanUser.next();
+      String SignId = scanUser.next();
       System.out.println("입력하신ID: "+SignId);
       user[Usernumber].setUserName(SignId);
       
       //입력된 SginId는 user[0] 배열의 setUserName에 할당된다.
       System.out.print("패스워드를 정해주세요:");
-      SignPass = scanUser.next();
+      String SignPass = scanUser.next();
       user[Usernumber].setUserPass(SignPass);
       //입력된 SignPass는 user[0] 배열의 setUserPass에 할당된다.
       System.out.print("닉네임을 정해주세요:");
-      SignNick = scanUser.next();
+      String SignNick = scanUser.next();
       user[Usernumber].setUserNic(SignNick);
       //입력된 SignNick는 user[0] 배열의 setUserNic에 할당된다.
       System.out.println("<회원가입이 완료 되었습니다!!>");
@@ -70,19 +71,19 @@ public class LogApp_Original {
             // for문을 통해 user[0~9]까지 돌려 null이 아닌 내용을 찾아 해당 내용들을 출력한다.
             for(int cnt=0;cnt<10;cnt++) { 
                if(user[cnt].getUserNic() != null) {
-                  // equals문을 썻는데 null부분에서 에러.
-                  // != 썻는데 정상 진행 왜..?
                System.out.print("<"+(cnt+1)+"번 아이디:"+user[cnt].getUserName()+">   ");
                System.out.print("<"+(cnt+1)+"번 비밀번호:"+user[cnt].getUserPass()+">\t ");
                System.out.print("<"+(cnt+1)+"번 닉네임:"+user[cnt].getUserNic()+">");
+               System.out.print("전화 번호:" + user[cnt].getUserPhoneNum() + "");
                System.out.println("");
             }
                
             }
          }catch(NullPointerException e) {
             e.getMessage();
-         }System.out.println("\n"); //해당 줄없이쓰니.. 111번줄이 다시 출력될 때 붙어서 나오면 보기가 어려워서 빈줄 추가하여 여백만듦.
+         }System.out.println("\n"); // 복잡해보이지 않도록 여백처리
    }
+ // ====================회원 탈퇴 부분=========================================================
    private static void Delete_User(){
       System.out.print("삭제할 아이디입력: ");
       String DeletId = scanUser.next();
@@ -103,12 +104,12 @@ public class LogApp_Original {
             stop=1; //위의 for문성공시 0이었던 stop은 1이되며 바로아래 if문을 거치지않고 끝난다.
          }
          // 바로위의 for문으로 내용을 찾지못하면 int stop은 그대로 0으로 나오고 아래와같은 문구가 출력된다.
-         if(stop==0) {
-            System.out.println("해당 아이디가 존재하지않습니다.");
-         }
-      }
+         
+      }if(stop==0) {
+          System.out.println("해당 아이디가 존재하지않습니다.");
+       }
    }
-   
+//====================메인화면====================================================================   
 public static void main(String[] args) {
       for(int cnt=0; cnt<10;cnt++) {
          user[cnt]=new UserInfo2(); //각 배열을 초기화 시켜줌으로써 NullPointException에러 방지
@@ -150,9 +151,10 @@ public static void main(String[] args) {
 }
 
 class UserInfo2{
-   private String UserName; //유저 
-   private String UserPass;
-   private String UserNic;
+	//필드
+   private String UserName; // 사용자 아이디
+   private String UserPass;// 사용자 패스워드
+   private String UserNic;//사용자 닉네임
    public UserInfo2() {}
    public UserInfo2(String userName, String userPass, String userNic) {
       this.UserName=userName;
